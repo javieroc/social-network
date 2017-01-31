@@ -1,4 +1,4 @@
-FROM ferroxido/lap
+FROM ferroxido/apache
 ENV APP_HOME /var/www/html
 RUN mkdir -p /opt/data/public && \
     rm -r /var/www/html && \
