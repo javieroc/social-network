@@ -16,9 +16,26 @@
                     </center>
                     <br />
                     <p class="text-center">
+                        {{ $user->profile->location }}
+                    </p>
+                    <br />
+                    <p class="text-center">
                         @if(Auth::id() == $user->id)
                             <a href="{{ route('profile.edit') }}" class="btn btn-lg btn-info">Edit your Profile</a>
                         @endif
+                    </p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p class="text-center">
+                        About me.
+                    </p>
+                </div>
+                <div class="panel-body">
+                    <p class="text-center">
+                        {{ $user->profile->about }}
                     </p>
                 </div>
             </div>
