@@ -12099,6 +12099,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(resp);
                 if (resp.data == 1) {
                     _this2.status = 'waiting';
+                    noty({
+                        type: 'success',
+                        layout: 'bottomLeft',
+                        text: 'Friend request sent.'
+                    });
                     _this2.loading = false;
                 }
             });
@@ -12111,6 +12116,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(resp);
                 if (resp.data == 1) {
                     _this3.status = 'friends';
+                    noty({
+                        type: 'success',
+                        layout: 'bottomLeft',
+                        text: 'You are now friends.'
+                    });
                     _this3.loading = false;
                 }
             });
