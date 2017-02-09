@@ -11,7 +11,7 @@ trait Friendable
         // Check not add himself.
         if($this->id === $user_requested_id)
         {
-            return 0;
+            return 'myself';
         }
 
         // Check if already friends.

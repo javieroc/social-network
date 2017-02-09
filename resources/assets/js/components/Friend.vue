@@ -4,7 +4,7 @@
             Loading...
         </p>
         <div v-if="!loading">
-            <button class="btn btn-success" v-if="status == 0">Add Friend</button>
+            <button class="btn btn-success" v-if="status == 0" @click="add_friend">Add Friend</button>
             <button class="btn btn-success" v-if="status == 'pending'">Accept Friend</button>
             <span class="text-success" v-if="status == 'waiting'">Waiting for response</span>
             <span class="text-success" v-if="status == 'friends'">Friends</span>
@@ -27,6 +27,19 @@
             return {
                 status: '',
                 loading: true,
+            }
+        },
+        methods: {
+            add_friend(){
+                this.loading = true
+                axios.get(`/add_friend/${this.profile_user_id}`)
+                    .then(resp => {
+                        console.log(resp)
+                        if(resp.data == 1){
+                            this.status = 'waiting'
+                            this.loading = false
+                        }
+                    })
             }
         }
     }

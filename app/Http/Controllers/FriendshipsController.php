@@ -24,6 +24,17 @@ class FriendshipsController extends Controller
             return ['status' => 'waiting'];
         }
 
+        if(Auth::user()->id == $id)
+        {
+            return ['status' => 'myself'];
+        }
+
         return ['status' => 0];
+    }
+
+    public function add_friend($id)
+    {
+        // Sending notifications, emails...
+        return Auth::user()->add_friend($id);
     }
 }
