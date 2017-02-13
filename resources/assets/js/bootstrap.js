@@ -43,5 +43,9 @@ import Echo from "laravel-echo"
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: 'your-pusher-key'
+    key: 'da8b115dbf9e1895fccb'
 });
+
+Pusher.log = function(message){
+    window.console.log(message)
+}
