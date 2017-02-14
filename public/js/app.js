@@ -12205,7 +12205,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         listen: function listen() {
             Echo.private('App.User.' + this.id).notification(function (notification) {
-                console.log(notification.type);
+                console.log(notification);
             });
         }
     }
@@ -38559,7 +38559,7 @@ var Component = __webpack_require__(9)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/connan/repos/social-network/resources/assets/js/components/Friend.vue"
+Component.options.__file = "/home/ferroxido/repos/social-network/resources/assets/js/components/Friend.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Friend.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -38593,7 +38593,7 @@ var Component = __webpack_require__(9)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/connan/repos/social-network/resources/assets/js/components/Notification.vue"
+Component.options.__file = "/home/ferroxido/repos/social-network/resources/assets/js/components/Notification.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Notification.vue: functional components are not supported with templates, they should use render functions.")}
 

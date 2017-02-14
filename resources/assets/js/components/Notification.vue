@@ -14,8 +14,8 @@
             listen(){
                 Echo.private(`App.User.${this.id}`)
                     .notification((notification) => {
-                        console.log(notification.type);
-                    });
+                        console.log(notification)
+                    })
             }
         }
     }

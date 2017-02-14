@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
-use App\Notifications\NewFriendRequest;
 
 class FriendshipsController extends Controller
 {
