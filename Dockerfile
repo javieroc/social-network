@@ -1,4 +1,4 @@
-FROM ferroxido/apache-laravel
+FROM ferroxido/apache-server
 ENV APP_HOME /var/www/html
 RUN mkdir -p /opt/data/public && \
     rm -r /var/www/html && \
