@@ -35,9 +35,9 @@ class FriendshipsController extends Controller
 
     public function add_friend($id)
     {
-        // Sending notifications, emails...
         $resp = Auth::user()->add_friend($id);
 
+        // Sending notifications, emails...
         User::find($id)->notify(new \App\Notifications\NewFriendRequest(Auth::user()));
 
         return $resp;
@@ -45,7 +45,11 @@ class FriendshipsController extends Controller
 
     public function accept_friend($id)
     {
+        $resp = Auth::user()->accept_friend($id);
+
         // Sending notifications, emails...
-        return Auth::user()->accept_friend($id);
+        User::find($id)->notify(new \App\Notifications\FriendRequestAccepted(Auth::user()));
+
+        return $resp;
     }
 }
