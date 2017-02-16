@@ -12205,7 +12205,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         listen: function listen() {
             Echo.private('App.User.' + this.id).notification(function (notification) {
-                console.log(notification);
+                noty({
+                    type: 'success',
+                    layout: 'bottomLeft',
+                    text: notification.name + notification.message
+                });
+                document.getElementById('noty_audio').play();
             });
         }
     }
