@@ -20788,12 +20788,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['id'],
     methods: {
         listen: function listen() {
+            var _this = this;
+
             Echo.private('App.User.' + this.id).notification(function (notification) {
                 noty({
                     type: 'success',
                     layout: 'bottomLeft',
                     text: notification.name + notification.message
                 });
+
+                _this.$store.commit('add_notification', notification);
+
                 document.getElementById('noty_audio').play();
             });
         }
