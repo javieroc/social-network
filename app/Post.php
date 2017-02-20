@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Post extends Model
 {
+
     protected $fillable = [
-        'location', 'about', 'user_id',
+        'content', 'user_id',
     ];
 
     public function user()

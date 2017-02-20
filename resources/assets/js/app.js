@@ -19,6 +19,8 @@ Vue.component('notification', require('./components/Notification.vue'));
 
 Vue.component('unread', require('./components/UnreadNotifications.vue'));
 
+Vue.component('post', require('./components/Post.vue'));
+
 import { store } from './store'
 
 const app = new Vue({

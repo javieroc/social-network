@@ -29,7 +29,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function profile(){
+    public function profile()
+    {
         return $this->hasOne('App\Profile');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
     }
 }

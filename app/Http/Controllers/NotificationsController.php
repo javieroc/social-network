@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class NotificationsController extends Controller
 {
-    public function notifications(){
+    public function notifications()
+    {
         Auth::user()->unreadNotifications->markAsRead();
 
         $notifications = Auth::user()->notifications;
