@@ -59,6 +59,11 @@ Route::group(['middleware' => 'auth'], function(){
         'as' => 'notifications',
     ]);
 
+    Route::post('/feed', [
+        'uses' => 'FeedsController@feed',
+        'as' => 'feed',
+    ]);
+
     Route::post('/posts/create', [
         'uses' => 'PostsController@store',
     ]);

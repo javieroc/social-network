@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        nots: []
+        nots: [],
+        posts: []
     },
     getters: {
         all_notifications(state){
