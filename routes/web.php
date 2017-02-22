@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function(){
         'as' => 'notifications',
     ]);
 
-    Route::post('/feed', [
+    Route::get('/feed', [
         'uses' => 'FeedsController@feed',
         'as' => 'feed',
     ]);
