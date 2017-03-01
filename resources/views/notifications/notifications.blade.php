@@ -11,7 +11,7 @@
                     <ul class="list-group">
                         @foreach($notifications as $notification)
                             <li class="list-group-item">
-                                <img src="{{ Storage::url($notification->notificater->avatar) }}" width="40px" height="40px" style="border-radius: 50%">&nbsp;
+                                <img src="{{ $notification->notificater->avatar }}" width="40px" height="40px" style="border-radius: 50%">&nbsp;
                                 {{ $notification->data['name'] }} &nbsp;|&nbsp;
                                 {{ $notification->data['message'] }}
                                 <span class="pull-right">{{ $notification->created_at->diffforHumans() }}</span>
