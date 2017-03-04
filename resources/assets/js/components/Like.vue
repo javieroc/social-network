@@ -1,9 +1,9 @@
 <template>
     <div>
-        <button class="btn btn-xs btn-info">
+        <button class="btn btn-xs btn-info" v-if="!auth_user_likes_post">
             <i class="glyphicon glyphicon-thumbs-up"></i> Like
         </button>
-        <button class="btn btn-xs btn-info">
+        <button class="btn btn-xs btn-info" v-else>
             <i class="glyphicon glyphicon-thumbs-down"></i> Unlike
         </button>
         <hr>
@@ -19,17 +19,40 @@
 <script>
     export default {
         mounted() {
-            
+
         },
         props: ['id'],
         methods: {
-
         },
         computed: {
             post() {
                 return this.$store.state.posts.find( post => {
                     return post.id === this.id
                 })
+            },
+            likers() {
+                let likers = []
+
+                this.post.likes.forEach( like => {
+                    likers.push(like.user)
+                })
+
+                return likers;
+            },
+            likers_ids() {
+                return this.likers.map( like => {
+                    return like.id
+                })
+            },
+            auth_user_likes_post() {
+                let check_index = this.likers_ids.indexOf(this.$store.state.auth_user.id)
+
+                if (check_index === -1) {
+                    return false
+                }
+                else {
+                    return true
+                }
             },
             tooltip_id() {
                 return 'tooltip-' + this.id

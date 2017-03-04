@@ -67,4 +67,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/posts/create', [
         'uses' => 'PostsController@store',
     ]);
+
+    Route::get('/get_auth_user_data', function(){
+        return Auth::user();
+    });
 });

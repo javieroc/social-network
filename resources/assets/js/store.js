@@ -6,25 +6,29 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
         nots: [],
-        posts: []
+        posts: [],
+        auth_user: {}
     },
     getters: {
-        all_notifications(state){
+        all_notifications(state) {
             return state.nots
         },
-        all_notifications_count(state){
+        all_notifications_count(state) {
             return state.nots.length
         },
-        all_posts(state){
+        all_posts(state) {
             return state.posts
         }
     },
     mutations: {
-        add_notification(state, notification){
+        add_notification(state, notification) {
             state.nots.push(notification)
         },
-        add_post(state, post){
+        add_post(state, post) {
             state.posts.push(post)
+        },
+        auth_user_data(state, user) {
+            state.auth_user = user
         }
     }
 })

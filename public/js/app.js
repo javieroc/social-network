@@ -19829,6 +19829,8 @@ __webpack_require__(38);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('init', __webpack_require__(76));
+
 Vue.component('friend', __webpack_require__(48));
 
 Vue.component('notification', __webpack_require__(50));
@@ -20876,6 +20878,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return post.id === _this.id;
             });
         },
+        likers: function likers() {
+            var likers = [];
+
+            this.post.likes.forEach(function (like) {
+                likers.push(like.user);
+            });
+
+            return likers;
+        },
+        likers_ids: function likers_ids() {
+            return this.likers.map(function (like) {
+                return like.id;
+            });
+        },
+        auth_user_likes_post: function auth_user_likes_post() {
+            var check_index = this.likers_ids.indexOf(this.$store.state.auth_user.id);
+
+            if (check_index === -1) {
+                return false;
+            } else {
+                return true;
+            }
+        },
         tooltip_id: function tooltip_id() {
             return 'tooltip-' + this.id;
         }
@@ -21090,7 +21115,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 var store = new __WEBPACK_IMPORTED_MODULE_1_vuex___default.a.Store({
     state: {
         nots: [],
-        posts: []
+        posts: [],
+        auth_user: {}
     },
     getters: {
         all_notifications: function all_notifications(state) {
@@ -21109,6 +21135,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex___default.a.Store({
         },
         add_post: function add_post(state, post) {
             state.posts.push(post);
+        },
+        auth_user_data: function auth_user_data(state, user) {
+            state.auth_user = user;
         }
     }
 });
@@ -47771,7 +47800,15 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  return _c('div', [(!_vm.auth_user_likes_post) ? _c('button', {
+    staticClass: "btn btn-xs btn-info"
+  }, [_c('i', {
+    staticClass: "glyphicon glyphicon-thumbs-up"
+  }), _vm._v(" Like\n    ")]) : _c('button', {
+    staticClass: "btn btn-xs btn-info"
+  }, [_c('i', {
+    staticClass: "glyphicon glyphicon-thumbs-down"
+  }), _vm._v(" Unlike\n    ")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "vtooltip"
   }, [_c('span', {
     attrs: {
@@ -47784,19 +47821,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "tooltiptext"
     }, [_c('h5', [_vm._v(_vm._s(like.user.name))])])
   })], 2)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "btn btn-xs btn-info"
-  }, [_c('i', {
-    staticClass: "glyphicon glyphicon-thumbs-up"
-  }), _vm._v(" Like\n    ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "btn btn-xs btn-info"
-  }, [_c('i', {
-    staticClass: "glyphicon glyphicon-thumbs-down"
-  }), _vm._v(" Unlike\n    ")])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -49028,7 +49053,7 @@ exports = module.exports = __webpack_require__(42)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n /* Tooltip container */\n.vtooltip {\n    position: relative;\n    display: inline-block;\n}\n\n/* Tooltip text */\n.vtooltip .tooltiptext {\n    visibility: hidden;\n    width: 200px;\n    background-color: #555;\n    color: #fff;\n    text-align: center;\n    padding: 5px 0;\n    border-radius: 2px;\n\n    /* Position the tooltip text */\n    position: absolute;\n    z-index: 1;\n    bottom: 125%;\n    left: 50%;\n    margin-left: -60px;\n\n    /* Fade in tooltip */\n    opacity: 0;\n    -webkit-transition: opacity 1s;\n    transition: opacity 1s;\n}\n\n/* Tooltip arrow */\n.vtooltip .tooltiptext::after {\n    content: \"\";\n    position: absolute;\n    top: 100%;\n    left: 25%;\n    margin-left: -5px;\n    border-width: 5px;\n    border-style: solid;\n    border-color: #555 transparent transparent transparent;\n}\n\n/* Show the tooltip text when you mouse over the tooltip container */\n.vtooltip:hover .tooltiptext {\n    visibility: visible;\n    opacity: 1;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n /* Tooltip container */\n.vtooltip {\n    position: relative;\n    display: inline-block;\n}\n\n/* Tooltip text */\n.vtooltip .tooltiptext {\n    visibility: hidden;\n    width: 200px;\n    background-color: #555;\n    color: #fff;\n    text-align: center;\n    padding: 5px 0;\n    border-radius: 2px;\n\n    /* Position the tooltip text */\n    position: absolute;\n    z-index: 1;\n    bottom: 125%;\n    left: 50%;\n    margin-left: -60px;\n\n    /* Fade in tooltip */\n    opacity: 0;\n    -webkit-transition: opacity 1s;\n    transition: opacity 1s;\n}\n\n/* Tooltip arrow */\n.vtooltip .tooltiptext::after {\n    content: \"\";\n    position: absolute;\n    top: 100%;\n    left: 25%;\n    margin-left: -5px;\n    border-width: 5px;\n    border-style: solid;\n    border-color: #555 transparent transparent transparent;\n}\n\n/* Show the tooltip text when you mouse over the tooltip container */\n.vtooltip:hover .tooltiptext {\n    visibility: visible;\n    opacity: 1;\n}\n", ""]);
 
 // exports
 
@@ -49057,6 +49082,82 @@ if(false) {
  }
  // When the module is disposed, remove the <style> tags
  module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 75 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    mounted: function mounted() {
+        this.get_auth_user_data();
+    },
+
+    methods: {
+        get_auth_user_data: function get_auth_user_data() {
+            var _this = this;
+
+            axios.get('/get_auth_user_data').then(function (resp) {
+                _this.$store.commit('auth_user_data', resp.data);
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(75),
+  /* template */
+  __webpack_require__(77),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/ferroxido/repos/social-network/resources/assets/js/components/Init.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Init.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2ebbd69c", Component.options)
+  } else {
+    hotAPI.reload("data-v-2ebbd69c", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div')
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2ebbd69c", module.exports)
+  }
 }
 
 /***/ })
