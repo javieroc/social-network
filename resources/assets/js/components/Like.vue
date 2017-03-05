@@ -1,9 +1,9 @@
 <template>
     <div>
-        <button class="btn btn-xs btn-info" v-if="!auth_user_likes_post">
+        <button class="btn btn-xs btn-info" v-if="!auth_user_likes_post" @click="like">
             <i class="glyphicon glyphicon-thumbs-up"></i> Like
         </button>
-        <button class="btn btn-xs btn-info" v-else>
+        <button class="btn btn-xs btn-info" v-else @click="unlike">
             <i class="glyphicon glyphicon-thumbs-down"></i> Unlike
         </button>
         <hr>
@@ -23,6 +23,34 @@
         },
         props: ['id'],
         methods: {
+            like() {
+                axios.get(`/like/${this.id}`)
+                    .then(resp => {
+                        this.$store.commit('like_post', {
+                            post_id: this.id,
+                            like: resp.data
+                        })
+                        noty({
+                            type: 'success',
+                            layout: 'bottomLeft',
+                            text: 'You successfully liked the post!.'
+                        })
+                    })
+            },
+            unlike() {
+                axios.get(`/unlike/${this.id}`)
+                    .then(resp => {
+                        this.$store.commit('unlike_post', {
+                            post_id: this.id,
+                            like_id: resp.data
+                        })
+                        noty({
+                            type: 'success',
+                            layout: 'bottomLeft',
+                            text: 'You successfully unliked the post!.'
+                        })
+                    })
+            }
         },
         computed: {
             post() {

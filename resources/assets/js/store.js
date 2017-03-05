@@ -29,6 +29,26 @@ export const store = new Vuex.Store({
         },
         auth_user_data(state, user) {
             state.auth_user = user
+        },
+        like_post(state, payload) {
+            let post = state.posts.find( p => {
+                return p.id === payload.post_id
+            })
+
+            post.likes.push(payload.like)
+        },
+        unlike_post(state, payload) {
+            let post = state.posts.find( p => {
+                return p.id === payload.post_id
+            })
+
+            let like = post.likes.find( l => {
+                return l.id === payload.like_id
+            })
+
+            let index = post.likes.indexOf(like)
+
+            post.likes.splice(index, 1)
         }
     }
 })
