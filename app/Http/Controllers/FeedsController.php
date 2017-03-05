@@ -22,6 +22,14 @@ class FeedsController extends Controller
             }
         }
 
+        foreach (Auth::user()->posts as $post) {
+            array_push($feed, $post);
+        }
+
+        usort($feed, function($p1, $p2){
+            return $p1->created_at < $p2->created_at;
+        });
+
         return $feed;
     }
 }
