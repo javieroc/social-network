@@ -23,7 +23,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'gender' => 0,
         'slug' => str_slug($name),
         'avatar' => 'public/defaults/avatars/female.png',
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => $password ?: $password = bcrypt('asdasd'),
         'remember_token' => str_random(10),
     ];
 });
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Profile::class, function (Faker\Generator $faker) {
+    return [
+        'location' => $faker->city(),
+        'about' => $faker->paragraph(4),
+    ];
+});
+
