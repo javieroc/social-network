@@ -168,6 +168,8 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 
+        Laravel\Scout\ScoutServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
