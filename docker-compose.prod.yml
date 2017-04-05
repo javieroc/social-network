@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - /data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: pass
+      MYSQL_DATABASE: socialnetwork
+      MYSQL_ROOT_PASSWORD: pass
+  web:
+    build: .
+    volumes:
+      - ./:/opt/data
+    ports:
+      - 8000:80
+    depends_on:
+      - mysql
